@@ -147,3 +147,16 @@ h1,h2, h6{
         font-size: .4em;
     }
 }
+
+footer{
+    width: 20vw;
+    height: 3em;
+    text-align: center;
+    font-family: 'Rationale', sans-serif;
+    font-size: 1.3em;
+    color: antiquewhite;
+    margin: 2em auto .2em;
+}
+footer > span {
+    margin: 0 1em;
+}
