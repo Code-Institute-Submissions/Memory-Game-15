@@ -18,17 +18,56 @@ body{
     background-size:cover;
 }
 
-header{
+.overlay-start{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     font-family: 'Rationale', sans-serif;
     color: antiquewhite;
-    text-align: center;
-    margin-top: 50px;
+    padding-top: 2em;
+    z-index: 100;
+}
+.overlay-start.visible{
+    display: flex;
+    animation: overlay-show 500ms forwards;
+}
+
+@keyframes overlay-show{
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.9);
+        font-size: 2em;
+    }
 }
 
 button {
     height: 5em;
     width: 10em;
-    margin-top: 50px;
+    margin:4em auto;
+    border-radius: 10%;
+    font-family: 'Rationale', sans-serif;
+    font-size: .5em;
+    color: antiquewhite;
+    background-color: #403D64;
+    
+}
+
+h1,h2, h6{
+    padding-bottom: 1em;
+}
+
+.overlay-start > p {
+    padding: 0 2em;
+    font-size: .7em;
 }
 
 #time{
@@ -101,5 +140,10 @@ button {
     display: flex;
     flex-wrap: wrap;
     
+    }
+
+    .overlay-start > p {
+        padding: 0 2em;
+        font-size: .4em;
     }
 }

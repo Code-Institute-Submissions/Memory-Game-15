@@ -7,13 +7,32 @@
     <title>Audio Memory Game</title>
 </head>
 <body>
- <!--<Header>
+    <section class="overlay-start visible">
      <h1>Welcome to Audio Memory Game</h1>
+     <h1>Echo</h1>
      <p>Game is designed to test your audio memory</p>
      <p>Try to match sounds and have fun!</p>
      <button>Start Game!</button>
- </Header>  -->
-    <div class="game-info"><span id="time">Time:100</span><span id="score">Score:0</span></div>  
+    </section>
+    <section class="overlay-start">
+        <h1>Game Over</h1>
+        <p>Do you want to try again?</p>
+        <button>Restart</button>
+        <button>Stop playing</button>
+    </section>
+    <section class="overlay-start">
+        <h1>You win!</h1>
+        <p>Ready for next level?</p>
+        <button>Next level</button>
+        <button>Stop playing</button>
+    </section>
+    <section class="overlay-start">
+        <h1>Thank you for playing my game!</h1>
+        <h6>Here is some interesting information about echoic memory</h6>
+        <p>Echoic memory is the sensory memory that register specific to auditory information (sounds). Once an auditory stimulus is heard, it is stored in memory so that it can be processed and understood. Unlike visual memory, in which our eyes can scan the stimuli over and over, the auditory stimuli cannot be scanned over and over. Since echoic memories are heard once, they are stored for slightly longer periods of time than iconic memories (visual memories). Auditory stimuli are received by the ear one at a time before they can be processed and understood. For instance, hearing the radio is very different from reading a magazine. A person can only hear the radio once at a given time, while the magazine can be read over and over again. It can be said that the echoic memory is like a "holding tank" concept, because a sound is unprocessed (or held back) until the following sound is heard, and only then can it be made meaningful. This particular sensory store is capable of storing large amounts of auditory information that is only retained for a short period of time (3–4 seconds). This echoic sound resonates in the mind and is replayed for this brief amount of time shortly after being heard.</p>
+        <p>Info from <a href="https://en.wikipedia.org/wiki/Echoic_memory" target="_blank" alt="Link to Wikipedia article">Wikipedia article</a>.</p>
+    </section>
+    <div class="game-info"><div id="time">Time:<span>100</span></div><div id="score">Score:<span>0</span></div></div>  
     <div class="game-area">
         <div class="card">
             <img class="frontface" src="/assets/images/eagle-emblem.png" alt="Frontface Card Image">
