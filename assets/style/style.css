@@ -74,6 +74,13 @@ h1,h2, h6{
     float: left;
 }
 
+#restart{
+    color: antiquewhite;
+    font-size: 1em;
+    padding: 10px;
+    border: solid 2px antiquewhite;
+}
+
 #score{
     float: right;
 }
@@ -121,6 +128,7 @@ h1,h2, h6{
     position: absolute;
     
 }
+
 @media screen and (max-width: 650px) {
     .game-info{
         width: 60vw;
@@ -149,7 +157,7 @@ h1,h2, h6{
 }
 
 footer{
-    width: 20vw;
+    width: 300px;
     height: 3em;
     text-align: center;
     font-family: 'Rationale', sans-serif;
