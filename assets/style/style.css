@@ -117,6 +117,11 @@ h1,h2, h6{
     transition: .5s;
 }
 
+.card.selected{
+    border: 2px solid goldenrod;
+    border-radius: 10%;
+}
+
 .frontface,
 .backface{
     width: 100%;
