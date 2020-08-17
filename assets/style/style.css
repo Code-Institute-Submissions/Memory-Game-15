@@ -70,7 +70,7 @@ h1,h2, h6{
     font-size: .7em;
 }
 
-#time{
+#time-text{
     float: left;
 }
 
@@ -81,7 +81,7 @@ h1,h2, h6{
     border: solid 2px antiquewhite;
 }
 
-#score{
+#score-text{
     float: right;
 }
 .game-info{

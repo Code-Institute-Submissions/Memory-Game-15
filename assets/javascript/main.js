@@ -17,7 +17,7 @@ class AudiControll  {
    this.winAudio = new Audio("assets/audio/winsound.mp3");
    this.matchAudio = new Audio("assets/audio/matchsound.mp3");
    this.lvlUpAudio = new Audio("assets/audio/lvlupsound.mp3");
-   this.clickedCardAudio = document.querySelectorAll('card');
+   
    }
 
    loseSound(){
@@ -39,15 +39,56 @@ class AudiControll  {
 
 ///Ready game function
 function ready(){
-   document.getElementsByClassName("overlay-start")[0].classList.add("visible");
+   document.getElementById("start-game").addEventListener('click', ()=>{
+      
+      document.getElementsByClassName("overlay-start")[0].classList.remove("visible");
+   });
    
+   let cards = document.querySelectorAll(".card");
+
+   cards.forEach(card => card.addEventListener('click', cardSelected));
+
+   let overlays = Array.from(document.getElementsByClassName("overlay-start"));
+
+   overlays.forEach(overlay => { overlay.addEventListener('click',()=>{
+         overlay.classList.remove("visible");
+         game.startGame();
+      });
+
+   });
 }
+
+
+ 
+
+
+class Echo {
+   constructor(time,cards) {
+      this.time = time;
+      this.cards = cards;
+      this.timeRemaining = time;
+      this.score = document.getElementById("scoreCount");
+      this.timer = document.getElementById("timer");
+      this.AudiControll = new AudiControll();
+
+   }
+}
+
+
+
+
+
+
+
+
+//////////////////////////////////////////old code -->
+
 
 const cards = document.querySelectorAll(".card");
 
-cards.forEach(card => card.addEventListener('click', cardSelected));
+   cards.forEach(card => card.addEventListener('click', cardSelected));
 
-document.getElementsByClassName("overlay-start")[0].addEventListener('click', startGame);
+
 
 let hasSelectedCard = false;
 let firstCard, secondCard;
@@ -138,14 +179,6 @@ function resetBoard(){
    [firstCard,secondCard] = [null, null];
 }
 //reset button function ???
-function startGame(){
-
-  //let elem = document.getElementsByClassName("overlay-start")[0];
-  this.classList.remove("visible");
-  
-   
-   
-}
 
 
 (function shuffle(){

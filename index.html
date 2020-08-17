@@ -8,13 +8,13 @@
     <title>Audio Memory Game</title>
 </head>
 <body>
-    <section class="overlay-start"> <!--add .visible class-->
+    <section class="overlay-start visible"> <!--add .visible class-->
      <h1>Welcome to Audio Memory Game</h1>
      <h1>Echo</h1>
      <p>Game is designed to test your audio memory.</p>
      <p>Goal of the game is to match all of the sounds.</p>
      <p>Have fun!</p>
-     <button>Start Game!</button>
+     <button id ="start-game">Start Game!</button>
     </section>
     <section class="overlay-start">
         <h1>Game Over</h1>
@@ -35,9 +35,9 @@
         <p>Info from <a href="https://en.wikipedia.org/wiki/Echoic_memory" target="_blank" alt="Link to Wikipedia article">Wikipedia article</a>.</p>
     </section>
     <!--Add restart button-->
-    <div class="game-info"><div id="time">Time:<span>100</span></div>
-    <i class="fa fa-undo"  aria-hidden="true" onclick="resetGameee()"></i>
-    <div id="score">Score:<span>0</span></div></div>  
+    <div class="game-info"><div id="time-text">Time:<span id="timer">100</span></div>
+    <i class="fa fa-undo"  aria-hidden="true"></i>
+    <div id="score-text">Score:<span id="scoreCount">0</span></div></div>  
     <div class="game-area" id="ggaa">
         <div class="card" data-sound="day">
             <img class="frontface" src="/assets/images/eagle-emblem.png" alt="Frontface Card Image">
