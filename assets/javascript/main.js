@@ -44,11 +44,14 @@ function ready(){
       document.getElementsByClassName("overlay-start")[0].classList.remove("visible");
    });
    
+   
    let cards = document.querySelectorAll(".card");
-
-   cards.forEach(card => card.addEventListener('click', cardSelected));
-
    let overlays = Array.from(document.getElementsByClassName("overlay-start"));
+   let game = new Echo(60,cards);
+
+   cards.forEach(card => card.addEventListener('click', ()=>{
+      this.children[2].play();
+   }));
 
    overlays.forEach(overlay => { overlay.addEventListener('click',()=>{
          overlay.classList.remove("visible");
@@ -60,19 +63,75 @@ function ready(){
 
 
  
-
-
 class Echo {
    constructor(time,cards) {
       this.time = time;
-      this.cards = cards;
+      this.cardsArray = cards;
       this.timeRemaining = time;
       this.score = document.getElementById("scoreCount");
       this.timer = document.getElementById("timer");
       this.AudiControll = new AudiControll();
 
    }
+
+   startTimer(){
+      return setInterval(() => {
+         this.timeRemaining--;
+         this.timer.innerText = this.timeRemaining;
+
+         if(this.timeRemaining === 0)
+            this.gameOver();
+         
+      },1000);
+   }
+
+   startGame(){
+      this.score = 0;
+      this.timeRemaining = time;
+      this.soundsToCheck = null;
+      this.matchedSounds = [];
+      this.lockBoard = true;
+      setTimeout(() => {
+         this.lockBoard = false;
+         this.shuffle(this.cardsArray);
+         this.countDown = this.startTimer();
+
+      },500);
+      this.resetCards();
+      this.timer.innerText = this.timeRemaining;
+      this.score = this.matchedSounds.length;
+
+   }
+
+   victory(){
+      this.AudiControll.winMusic();
+      clearInterval(this.countDown);
+      document.getElementsByClassName("overlay-start")[2].classList.add("visible");
+   }
+
+   gameOver(){
+      this.AudiControll.loseSound();
+      clearInterval(this.countDown);
+      document.getElementsByClassName("overlay-start")[1].classList.add("visible");
+   }
+
+   resetCards(){
+      this.cardsArray.forEach(card =>{
+         card.classList.remove("selected");
+         card.classList.remove("matched");
+      });
+   }
+
+   cardSelect(){
+      if(this.canSelectCard(card)){
+         card.classList.add("selected");
+      }
+   }
+
+
 }
+
+
 
 
 
