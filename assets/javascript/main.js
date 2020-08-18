@@ -79,7 +79,7 @@ class Echo {
          this.shuffle(this.cardsArray);
          this.countDown = this.startTimer();
 
-      },500);
+      },1000);
       this.resetCards();
       this.timer.innerText = this.timeRemaining;
       this.score = this.matchedSounds.length;
@@ -126,7 +126,18 @@ function ready(){
       
       document.getElementsByClassName("overlay-start")[0].classList.remove("visible");
    });
+
+
+   let restartBtn = Array.from(document.getElementsByClassName("restart"));
    
+   restartBtn.forEach(btn => btn.addEventListener('click',()=> {
+      game.startGame();
+   }));
+   
+   let stopBtn = Array.from(document.getElementsByClassName("stop-playing"));
+   stopBtn.forEach(btn => btn.addEventListener('click',()=>{
+      document.getElementsByClassName("overlay-start")[3].classList.add("visible");
+   }))
    
    let cards = Array.from(document.querySelectorAll(".card"));
    let overlays = Array.from(document.getElementsByClassName("overlay-start"));
