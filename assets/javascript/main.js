@@ -1,7 +1,7 @@
 //Check if DOMContent is loaded
 
 if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', ready());
+   document.addEventListener('DOMContentLoaded', ready);
  } else {
    ready();
  }
@@ -37,32 +37,8 @@ class AudiControll  {
 
 }
 
-///Ready game function
-function ready(){
-   document.getElementById("start-game").addEventListener('click', ()=>{
-      
-      document.getElementsByClassName("overlay-start")[0].classList.remove("visible");
-   });
-   
-   
-   let cards = document.querySelectorAll(".card");
-   let overlays = Array.from(document.getElementsByClassName("overlay-start"));
-   let game = new Echo(60,cards);
-
-   cards.forEach(card => card.addEventListener('click', ()=>{
-      this.children[2].play();
-   }));
-
-   overlays.forEach(overlay => { overlay.addEventListener('click',()=>{
-         overlay.classList.remove("visible");
-         game.startGame();
-      });
-
-   });
-}
 
 
- 
 class Echo {
    constructor(time,cards) {
       this.time = time;
@@ -87,13 +63,13 @@ class Echo {
 
    startGame(){
       this.score = 0;
-      this.timeRemaining = time;
+      this.timeRemaining = this.time;
       this.soundsToCheck = null;
       this.matchedSounds = [];
       this.lockBoard = true;
       setTimeout(() => {
          this.lockBoard = false;
-         this.shuffle(this.cardsArray);
+         //this.shuffle(this.cardsArray);
          this.countDown = this.startTimer();
 
       },500);
@@ -122,14 +98,49 @@ class Echo {
       });
    }
 
-   cardSelect(){
+   cardSelect(card){
       if(this.canSelectCard(card)){
          card.classList.add("selected");
       }
    }
 
+   canSelectCard(){
+      return  true;
+
+      //return (!this.lockBoard && !this.matchedSounds.includes(card) && card !== this.soundsToCheck)
+   }
 
 }
+
+
+///Ready game function
+function ready(){
+   document.getElementById("start-game").addEventListener('click', ()=>{
+      
+      document.getElementsByClassName("overlay-start")[0].classList.remove("visible");
+   });
+   
+   
+   let cards = document.querySelectorAll(".card");
+   let overlays = Array.from(document.getElementsByClassName("overlay-start"));
+   let game = new Echo(60,cards);
+
+   cards.forEach(card => card.addEventListener('click', ()=>{
+      card.children[2].play();
+      game.cardSelect(card);
+   }));
+
+   overlays.forEach(overlay => { overlay.addEventListener('click',()=>{
+         overlay.classList.remove("visible");
+         game.startGame();
+      });
+
+   });
+}
+
+
+ 
+
 
 
 
@@ -142,7 +153,7 @@ class Echo {
 
 //////////////////////////////////////////old code -->
 
-
+/*
 const cards = document.querySelectorAll(".card");
 
    cards.forEach(card => card.addEventListener('click', cardSelected));
@@ -248,3 +259,4 @@ function resetBoard(){
 
 })();
 
+*/
