@@ -18,6 +18,7 @@ class AudiControll  {
    this.matchAudio = new Audio("assets/audio/matchsound.mp3");
    this.lvlUpAudio = new Audio("assets/audio/lvlupsound.mp3");
    
+   
    }
 
    loseSound(){
@@ -108,13 +109,14 @@ class Echo {
    cardSelect(card){
       if(this.canSelectCard(card)){
          card.classList.add("selected");
-      }
+         card.children[2].play();
+      
       if(this.soundsToCheck){
          this.checkForMatch(card);
       }else{
          this.soundsToCheck = card;
       }
-
+      }
    }
 
    checkForMatch(card){
@@ -129,13 +131,11 @@ class Echo {
    }
 
    soundMatch(card1, card2){
+      this.matchedSounds.push(card1);
+      this.matchedSounds.push(card2);
       card1.classList.add("matched");
       card2.classList.add("matched");
       this.AudiControll.matchSound();
-      this.matchedSounds.push(card1);
-      this.matchedSounds.push(card2);
-      card1.removeEventListener('click',function(){});
-      card2.removeEventListener('click', function(){});
       this.score.innerText = this.matchedSounds.length / 2;
       
       if(this.matchedSounds.length === this.cardsArray.length)
@@ -188,9 +188,9 @@ function ready(){
    let cards = Array.from(document.querySelectorAll(".card"));
    let overlays = Array.from(document.getElementsByClassName("overlay-start"));
    let game = new Echo(60,cards);
-
+   
    cards.forEach(card => card.addEventListener('click', ()=>{
-      card.children[2].play();
+      //card.children[2].play();
       game.cardSelect(card);
    }));
 
@@ -203,124 +203,4 @@ function ready(){
 }
 
 
- 
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////old code -->
-
-/*
-const cards = document.querySelectorAll(".card");
-
-   cards.forEach(card => card.addEventListener('click', cardSelected));
-
-
-
-let hasSelectedCard = false;
-let firstCard, secondCard;
-let lockGameArea = false;//disables clicking more then two cards
-
-
-
-function cardSelected (){
-   if(lockGameArea === true) return;
-
-   if(this === firstCard) return; // to prevent double clicking same card
-
-   this.classList.add("selected");
-   
-   
-
-   let sound = this.children[2];
-   sound.play();
-
-   if(!hasSelectedCard){
-
-      hasSelectedCard = true;
-      firstCard = this;
-      
-   }
-   else{
-      
-      hasSelectedCard = false;
-      secondCard = this;
-      
-
-
-      checkForMatch();
-   }
-   
-}
-
-function checkForMatch(){
-
-   if(firstCard.dataset.sound === secondCard.dataset.sound){
-      matchedSounds();
-   }
-   else{
-      
-      mismatchedSounds();
-   }
-}
-
-function matchedSounds(){
-      firstCard.removeEventListener('click',cardSelected);
-      secondCard.removeEventListener('click',cardSelected);
-
-      firstCard.classList.remove("selected");
-      secondCard.classList.remove("selected");
-
-      firstCard.classList.add("matched");
-      secondCard.classList.add("matched");
-
-      resetBoard();
-      //add sounds
-      setTimeout(() => {
-         matchSound();
-      }, 500);
-      
-}
-
-function matchSound(){
-   let audioC = new AudiControll();
-      audioC.matchSound();
-}
-
-function mismatchedSounds(){
-
-   lockGameArea = true;
-
-   setTimeout(() => {
-      firstCard.classList.remove("selected");
-      secondCard.classList.remove("selected");
-
-      resetBoard();
-      },1000);
-
-      
-}
-
-function resetBoard(){
-   [hasSelectedCard, lockGameArea] = [false, false];
-   [firstCard,secondCard] = [null, null];
-}
-//reset button function ???
-
-
-(function shuffle(){
-   cards.forEach(card => {
-      let randOrder = Math.floor(Math.random() * 12);
-      card.style.order = randOrder;
-   });
-
-})();
-
-*/
+///Lvl up functionality
