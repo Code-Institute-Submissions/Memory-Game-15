@@ -109,9 +109,47 @@ class Echo {
       if(this.canSelectCard(card)){
          card.classList.add("selected");
       }
+      if(this.soundsToCheck){
+         this.checkForMatch(card);
+      }else{
+         this.soundsToCheck = card;
+      }
+
    }
 
-   canSelectCard(){
+   checkForMatch(card){
+      if(this.card.dataset.sound === this.soundsToCheck.dataset.sound)
+         this.soundMatch(card, this.soundsToCheck);
+
+      else{
+         this.soundMismatch(card, this.soundsToCheck);
+      }
+
+   }
+
+   soundMatch(card1, card2){
+      card1.classList.add("matched");
+      card2.classList.add("matched");
+      this.AudiControll.matchSound();
+      this.matchedSounds.push(card1);
+      this.matchedSounds.push(card2);
+      this.score++;
+      this.score.innerText = this.score;
+
+      if(this.matchedSounds.length === this.cardsArray.length)
+
+         this.victory();
+
+   }
+
+   soundMismatch(card1,card2){
+      card1.classList.remove("selected");
+      card2.classList.remove("selected");
+
+
+   }
+
+   canSelectCard(card){
       return  true;
 
       //return (!this.lockBoard && !this.matchedSounds.includes(card) && card !== this.soundsToCheck)
@@ -129,7 +167,6 @@ function ready(){
 
 
    let restartBtn = Array.from(document.getElementsByClassName("restart"));
-   
    restartBtn.forEach(btn => btn.addEventListener('click',()=> {
       game.startGame();
    }));
