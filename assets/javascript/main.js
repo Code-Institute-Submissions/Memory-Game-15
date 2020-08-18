@@ -44,7 +44,8 @@ class Echo {
       this.time = time;
       this.cardsArray = cards;
       this.timeRemaining = time;
-      this.score = document.getElementById("scoreCount");
+      this.score = document.getElementById("score-count");
+      this.scoreCount = this.score.innerText;
       this.timer = document.getElementById("timer");
       this.AudiControll = new AudiControll();
 
@@ -69,21 +70,20 @@ class Echo {
    }
 
    startGame(){
-      this.score = 0;
+      this.score.innerText = 0;
       this.timeRemaining = this.time;
       this.soundsToCheck = null;
       this.matchedSounds = [];
       this.lockBoard = true;
+      this.resetCards();
+      this.timer.innerText = this.timeRemaining;
       setTimeout(() => {
          this.lockBoard = false;
          this.shuffle(this.cardsArray);
          this.countDown = this.startTimer();
 
-      },1000);
-      this.resetCards();
-      this.timer.innerText = this.timeRemaining;
-      this.score = this.matchedSounds.length;
-
+      },700);
+      
    }
 
    victory(){
@@ -118,13 +118,14 @@ class Echo {
    }
 
    checkForMatch(card){
-      if(this.card.dataset.sound === this.soundsToCheck.dataset.sound)
+      if( this.getSoundName(card) === this.getSoundName(this.soundsToCheck))
          this.soundMatch(card, this.soundsToCheck);
 
       else{
          this.soundMismatch(card, this.soundsToCheck);
+         this.soundsToCheck = null;
       }
-
+         
    }
 
    soundMatch(card1, card2){
@@ -133,9 +134,10 @@ class Echo {
       this.AudiControll.matchSound();
       this.matchedSounds.push(card1);
       this.matchedSounds.push(card2);
-      this.score++;
-      this.score.innerText = this.score;
-
+      card1.removeEventListener('click',function(){});
+      card2.removeEventListener('click', function(){});
+      this.score.innerText = this.matchedSounds.length / 2;
+      
       if(this.matchedSounds.length === this.cardsArray.length)
 
          this.victory();
@@ -143,16 +145,22 @@ class Echo {
    }
 
    soundMismatch(card1,card2){
-      card1.classList.remove("selected");
-      card2.classList.remove("selected");
+      this.lockBoard = true;
+      setTimeout(() => {
+         card1.classList.remove("selected");
+         card2.classList.remove("selected");
+         this.lockBoard = false;
+      }, 1000);
+      
+   }
 
-
+   getSoundName(card){
+       return card.getElementsByTagName("audio")[0].src;
+      
    }
 
    canSelectCard(card){
-      return  true;
-
-      //return (!this.lockBoard && !this.matchedSounds.includes(card) && card !== this.soundsToCheck)
+      return !this.lockBoard && !this.matchedSounds.includes(card) && card !== this.soundsToCheck;
    }
 
 }
@@ -164,7 +172,8 @@ function ready(){
       
       document.getElementsByClassName("overlay-start")[0].classList.remove("visible");
    });
-
+   
+   
 
    let restartBtn = Array.from(document.getElementsByClassName("restart"));
    restartBtn.forEach(btn => btn.addEventListener('click',()=> {
