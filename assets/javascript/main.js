@@ -61,6 +61,13 @@ class Echo {
       },1000);
    }
 
+   shuffle(){
+      this.cardsArray.forEach(card => {
+         let randOrder = Math.floor(Math.random() * 12);
+         card.style.order = randOrder;
+      });
+   }
+
    startGame(){
       this.score = 0;
       this.timeRemaining = this.time;
@@ -69,7 +76,7 @@ class Echo {
       this.lockBoard = true;
       setTimeout(() => {
          this.lockBoard = false;
-         //this.shuffle(this.cardsArray);
+         this.shuffle(this.cardsArray);
          this.countDown = this.startTimer();
 
       },500);
@@ -121,7 +128,7 @@ function ready(){
    });
    
    
-   let cards = document.querySelectorAll(".card");
+   let cards = Array.from(document.querySelectorAll(".card"));
    let overlays = Array.from(document.getElementsByClassName("overlay-start"));
    let game = new Echo(60,cards);
 
