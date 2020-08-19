@@ -28,6 +28,7 @@ class AudiControll  {
    }
 
 }
+//Game constructor class
 
 class Echo {
    constructor(time,cards) {
@@ -60,6 +61,7 @@ class Echo {
       },700);
       
    }
+// Timer
 
    startTimer(){
       clearInterval(this.countDown);
@@ -72,6 +74,7 @@ class Echo {
          
       },1000);
    }
+//Victory function
 
    victory(){
       this.AudiControll.winMusic();
@@ -84,6 +87,7 @@ class Echo {
       }
    }
 
+//Game over function
 
    gameOver(){
       this.AudiControll.loseSound();
@@ -110,6 +114,7 @@ class Echo {
          }
       }
    }
+// Check for match functionality below
 
    checkForMatch(card){
       if( this.getSoundName(card) === this.getSoundName(this.soundsToCheck))
@@ -152,6 +157,7 @@ class Echo {
       }, 1000);
       
    }
+// Shuffle function
 
    shuffle(){
       this.cardsArray.forEach(card => {
@@ -159,6 +165,7 @@ class Echo {
          card.style.order = randOrder;
       });
    }
+// Checks for sound types to compare against
 
    getSoundName(card){
        return card.getElementsByTagName("audio")[0].src;
@@ -168,6 +175,7 @@ class Echo {
    canSelectCard(card){
       return !this.lockBoard && !this.matchedSounds.includes(card) && card !== this.soundsToCheck;
    }
+// Level up functionality
 
    levelUp(){
       document.getElementsByClassName("overlay-start")[2].classList.remove("visible");
@@ -179,16 +187,9 @@ class Echo {
       });
       this.addCards();
       this.startGame();
-     /* if(this.currentLevel === 1){
-         
-         this.lvlTwo.classList.remove("hidden");
-         this.lvlTwo.classList.add("card");
-      }
-      
-      if(this.currentLevel === 2){
-         document.getElementsByClassName("overlay-start")[3].classList.add("visible");
-      }*/
+     
    }
+
    addCards(){
       this.lvlOne.forEach(el =>{
          el.addEventListener('click',()=>{
@@ -207,8 +208,7 @@ if (document.readyState === 'loading') {
    ready();
  }
 
-//Ready game function
-
+//Ready game function - Game is started from here. Also contains button functionality
 function ready(){
    document.getElementById("start-game").addEventListener('click', ()=>{
       
@@ -245,4 +245,3 @@ function ready(){
 }
 
 
-///Lvl up functionality

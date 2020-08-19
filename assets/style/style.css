@@ -148,7 +148,7 @@ h1,h2, h6{
 .frontface{
     transform: rotateY(180deg);
 }
-
+/*Mobile responsivness*/
 @media screen and (max-width: 650px) {
     .game-info{
         width: 60vw;
