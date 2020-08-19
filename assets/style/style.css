@@ -12,7 +12,9 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: url(/assets/images/background-body.jpg);
+   /* background: url(/asssets/images/background-body.jpg) #6f6fdb ; - not working on githubpages*/
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(57,57,112,1) 19%, rgba(0,212,255,1) 100%);
     background-position: center;
     background-repeat: repeat;
     background-size:cover;
