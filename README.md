@@ -159,6 +159,8 @@ I desided to make design of this game simple and responsive across devices. My m
 
 * Also, I use this youtube guide from **[PortEXE](https://www.youtube.com/watch?v=3uuQ3g92oPQ)** to help me develop my more complex game features and refactor my code.
 
+* Also without Stackowerflow, W3schools and MDN this would be impossible.
+
 **Media**
 
 * Background image was taken from **[Unsplash](https://unsplash.com/)**.
