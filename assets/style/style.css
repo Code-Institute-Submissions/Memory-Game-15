@@ -96,7 +96,7 @@ h1,h2, h6{
 }
 .game-area{
     width: 640px;
-    height: 400px;
+    height: 50vh;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -110,6 +110,30 @@ h1,h2, h6{
     position: relative;
     transform-style: preserve-3d;
     transition: transform .5s;
+}
+
+.card.lvl-1.hidden{
+    display: none;
+    width: calc(25% - 10px);
+    height: calc(25% - 10px);
+    
+}
+
+.card.lvl-1{
+    width: calc(25% - 10px);
+    height: calc(25% - 10px);
+    
+}
+
+.card.lvl-2.hidden{
+    display: none;
+    width: calc(25% - 10px);
+    height: calc(20% - 10px);
+}
+
+.card.lvl-2{
+    width: calc(25% - 10px);
+    height: calc(20% - 10px);
 }
 
 .card:hover{
@@ -167,6 +191,22 @@ h1,h2, h6{
     .overlay-start > p {
         padding: 0 2em;
         font-size: .4em;
+    }
+
+    footer{
+        width: 300px;
+        height: 1em;
+        text-align: center;
+        margin: 2em auto .2em;
+    }
+    .fa {
+        font-size: initial;
+    }
+    footer > span {
+        margin: 0 1em;
+        font-size: 10px;
+        font-family: 'Rationale', sans-serif;
+        color: antiquewhite;
     }
 }
 

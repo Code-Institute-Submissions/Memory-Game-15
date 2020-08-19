@@ -53,6 +53,7 @@ class Echo {
    }
 
    startTimer(){
+      clearInterval(this.countDown);
       return setInterval(() => {
          this.timeRemaining--;
          this.timer.innerText = this.timeRemaining;
@@ -171,6 +172,7 @@ function ready(){
    document.getElementById("start-game").addEventListener('click', ()=>{
       
       document.getElementsByClassName("overlay-start")[0].classList.remove("visible");
+      game.startGame();
    });
    
    
@@ -190,13 +192,13 @@ function ready(){
    let game = new Echo(60,cards);
    
    cards.forEach(card => card.addEventListener('click', ()=>{
-      //card.children[2].play();
+      
       game.cardSelect(card);
    }));
 
    overlays.forEach(overlay => { overlay.addEventListener('click',()=>{
          overlay.classList.remove("visible");
-         game.startGame();
+         
       });
 
    });
