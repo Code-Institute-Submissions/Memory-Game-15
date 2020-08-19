@@ -1,27 +1,27 @@
-# Audio Memeory Game - ECHO
+# Audio Memory Game - ECHO
 
-This project repesents my second milestone project for Code Institute  Full Stack Web Developer program. Creating this web aplication was tremendous challenge for me and after completing it I feel that I learn a lot more about javascript and what it takes to be good coder. I decided to make this web app after my first project idea wasn't on point with the requirements for second milestone project. I decided that audio memeory game was a good spin on classical memory card game. It was created in relatively short period durnig which spend 10+ hours daily infront of PC, so it probablyhas some begginers downfalls.
+This project represents my second milestone project for Code Institute  Full Stack Web Developer program. Creating this web application was a tremendous challenge for me and after completing it I feel that I learn a lot more about javascript and what it takes to be good coder. I decided to make this web app after my first project idea wasn't on point with the requirements for second milestone project. I decided that audio memeory game was a good spin on classical memory card game. It was created in relatively short period durnig which spend 10+ hours daily infront of PC, so it probably has some beginners downfalls.
 -  **[Live Site](https://wertzhog.github.io/Memory-Game/ )**
 ## Design
-I desided to make design of this game simple and responsive across devices. My main focus was developing javascript funcionality since it was challenge to do something like this for the first time on my own. 
+I decided to make design of this game simple and responsive across devices. My main focus was developing javascript functionality since it was challenge to do something like this for the first time on my own. 
 
 ### User stories
 
 * As a user I want this game to be challenging and fun.
 * As a user I want to keep score and time on my screen.
-* As a user I want to havemore challenging level of game.
+* As a user I want to have more challenging level of game.
 * As a user I want to me able to restart game.
 
 ### Mockups
 
     * I used Figma to create mockup [mockup](https://github.com/Wertzhog/Memory-Game/tree/master/assets/mockups)
-    * Desing is itentionaly same across devices.
+    * Desing is intentionally the same across devices.
 
 ## Features
 
-### Exisiting Features
+### Existing Features
 
-* **Start screen overlay** - allows users to get information about game and to start game.
+* **Start screen overlay** - allows users to get game information and to start game.
                             - I didn't use any CSS frameworks since game has very simple design.
 
 * **Victory/Game Over overlay** - created to give user option to choose more difficult level or stop playing game.
@@ -43,7 +43,7 @@ I desided to make design of this game simple and responsive across devices. My m
 
 * **Different game mode** - I would like to implement more game modes like: matching words with their definitions
 
-* **Ear training mode** - users need to match two same tone which could be very useful for musician's ear training.
+* **Ear training mode** - users need to match two same tones which could be very useful for musician's ear training.
 
 
 
@@ -111,9 +111,9 @@ I desided to make design of this game simple and responsive across devices. My m
 
             - My biggest challenge was to implement level up functionality. Took lot of try and error but managed to make it functional in last minute.
 
-            - I had issue with selecting cards after I got match, but maganed to fix it through reseting card selection in matched cards function.
+            - I had an issue with selecting cards after I got match, but maganed to fix it through reseting card selection in matched cards function.
 
-        * During development of this project I learn a lot about javascipt object oriented programing and still feel like I have a lot more to learn. I was super challenging and braintwisting to make it all functional. I am glad I managed to do it. This gives me motivation to keep learning and overcoming new challenges.
+        * During development of this project I learn a lot about javascipt object-oriented programing and still feel like I have a lot more to learn. I was super challenging and brain-twisting to make it all functional. I am glad I managed to do it. This gives me the motivation to keep learning and overcoming new challenges.
 
 
 
@@ -121,11 +121,11 @@ I desided to make design of this game simple and responsive across devices. My m
 
     * **Testing User Stories Scenarios**
 
-        * All of the game functionality works fine. All of the buttons, timer and score keeping.
+        * All of the game functionality works fine. All of the buttons, timer and scorekeeping.
 
 ## Deployment
 
- **[GitHub](https://github.com/)** - is used to host code and files for this project. Project has only one branch(master). Deployed version is most current version of repository.
+ **[GitHub](https://github.com/)** - is used to host code and files for this project. The project has only one branch(master). Deployed version is most current version of repository.
 
  * **GitHub pages** was used to deploy this site.
     - Go to repository master branch.
